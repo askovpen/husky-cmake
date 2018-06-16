@@ -28,6 +28,10 @@ ADD_LIBRARY(hptzip SHARED ${hptzip_SOURCES})
 set_target_properties(hptzip PROPERTIES VERSION ${hptzip_VERSION})
 set_target_properties(hptzip PROPERTIES PUBLIC_HEADER "${hptzip_HEADERS}")
 target_include_directories(hptzip PRIVATE huskylib)
+if (UNIX)
+set_target_properties(hptzip PROPERTIES CMAKE_C_FLAGS "${CMAKE_C_FLAGS_DEBUG} -O0")
+endif()
+
 
 if (HPTZIP)
   target_include_directories(hptzip PRIVATE ${ZLIB_INCLUDE_DIRS})
