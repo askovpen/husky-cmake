@@ -6,7 +6,7 @@ clone_folder: c:\projects\cmake-init
 image:
   - Visual Studio 2017
 platform:
-  - x86
+  - Win32
 before_build:
   - cmd: git submodule init
   - cmd: git submodule update
