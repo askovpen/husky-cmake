@@ -6,11 +6,10 @@ clone_folder: c:\projects\cmake-init
 platform:
   - x86
 before_build:
-  - cmd: |-
-    mkdir build
-    cd build
-    cmake --version
-    cmake .. -G "Visual Studio 15 2017"
+  - cmd: mkdir build
+  - cmd: cd build
+  - cmd: cmake --version
+  - cmd: cmake .. -G "Visual Studio 15 2017"
 build:
   project: c:\projects\cmake-init\build\husky.sln
   verbosity: minimal
