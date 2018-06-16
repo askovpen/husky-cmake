@@ -44,6 +44,9 @@ ADD_EXECUTABLE(hptlink
 ADD_EXECUTABLE(hpttree
   hpt/src/hpttree.c
 )
+if (${PERLLIBS_FOUND})
+  set(per_SRC hpt/src/perl.c)
+endif()
 ADD_EXECUTABLE(hpt
   hpt/src/hpt.c
   hpt/src/dupe.c
@@ -67,13 +70,17 @@ target_link_libraries(tpkt husky fidoconfig smapi)
 target_link_libraries(txt2pkt husky fidoconfig smapi)
 target_link_libraries(hptlink husky fidoconfig smapi)
 target_link_libraries(hpttree husky fidoconfig smapi)
-target_link_libraries(hpt husky fidoconfig smapi areafix ${PERL_LIBRARY})
+target_link_libraries(hpt husky fidoconfig smapi areafix)
 target_include_directories(pktinfo PRIVATE hpt/h huskylib fidoconf smapi areafix)
 target_include_directories(tpkt PRIVATE hpt/h fidoconf huskylib areafix smapi)
 target_include_directories(txt2pkt PRIVATE hpt/h huskylib fidoconf smapi areafix)
 target_include_directories(hptlink PRIVATE hpt/h huskylib fidoconf smapi areafix)
 target_include_directories(hpttree PRIVATE hpt/h huskylib smapi fidoconf)
-target_include_directories(hpt PRIVATE hpt/h huskylib fidoconf smapi areafix ${PERL_INCLUDE_PATH})
+target_include_directories(hpt PRIVATE hpt/h huskylib fidoconf smapi areafix)
+if (${PERLLIBS_FOUND})
+  target_link_libraries(hpt ${PERL_LIBRARY})
+  target_include_directories(hpt PRIVATE ${PERL_INCLUDE_PATH})
+endif()
 if (HPTZIP) 
   target_include_directories(hpt PRIVATE hptzip)
   target_link_libraries(hpt hptzip ${ZLIB_LIBRARIES})
