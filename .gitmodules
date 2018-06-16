@@ -25,3 +25,6 @@
 [submodule "hptzip"]
 	path = hptzip
 	url = https://github.com/huskyproject/hptzip
+[submodule "zlib"]
+	path = zlib
+	url = https://github.com/madler/zlib
