@@ -1,0 +1,27 @@
+[submodule "fidoconf"]
+	path = fidoconf
+	url = https://github.com/huskyproject/fidoconf
+[submodule "htick"]
+	path = htick
+	url = https://github.com/huskyproject/htick
+[submodule "smapi"]
+	path = smapi
+	url = https://github.com/huskyproject/smapi
+[submodule "nltools"]
+	path = nltools
+	url = https://github.com/huskyproject/nltools
+[submodule "hpt"]
+	path = hpt
+	url = https://github.com/huskyproject/hpt
+[submodule "areafix"]
+	path = areafix
+	url = https://github.com/huskyproject/areafix
+[submodule "huskylib"]
+	path = huskylib
+	url = https://github.com/huskyproject/huskylib
+[submodule "sqpack"]
+	path = sqpack
+	url = https://github.com/huskyproject/sqpack
+[submodule "hptzip"]
+	path = hptzip
+	url = https://github.com/huskyproject/hptzip
