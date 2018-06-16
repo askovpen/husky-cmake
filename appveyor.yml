@@ -3,6 +3,8 @@ branches:
   only:
     - master
 clone_folder: c:\projects\cmake-init
+image:
+  - Visual Studio 2017
 platform:
   - x86
 before_build:
