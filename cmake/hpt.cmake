@@ -10,7 +10,7 @@ endif()
 if (NOT areafix_VERSION)
   include(areafix)
 endif()
-if (NOT hptzip_VERSION)
+if (NOT hptzip_VERSION AND HPTZIP)
   include(hptzip)
 endif()
 

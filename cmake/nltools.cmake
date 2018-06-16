@@ -7,6 +7,9 @@ endif()
 if (NOT husky_VERSION)
   include(husky)
 endif()
+if (NOT hptzip_VERSION AND HPTZIP)
+  include(hptzip)
+endif()
 
 ADD_EXECUTABLE(nldiff
   nltools/src/nldiff.c
@@ -40,9 +43,10 @@ target_include_directories(nlcrc PRIVATE nltools/h huskylib)
 target_link_libraries(ulc fidoconfig smapi husky)
 target_include_directories(ulc PRIVATE nltools/h huskylib fidoconf)
 target_link_libraries(nlupd fidoconfig smapi husky)
-target_include_directories(nlupd PRIVATE nltools/h huskylib fidoconf hptzip)
+target_include_directories(nlupd PRIVATE nltools/h huskylib fidoconf)
 
 if (HPTZIP)
+  target_include_directories(nlupd PRIVATE nltools/h huskylib fidoconf hptzip)
   target_link_libraries(nlupd hptzip ${ZLIB_LIBRARIES})
 endif()
 

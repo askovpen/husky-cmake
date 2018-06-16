@@ -11,7 +11,7 @@ if (NOT areafix_VERSION)
   include(areafix)
 endif()
 
-if (NOT hptzip_VERSION)
+if (NOT hptzip_VERSION AND HPTZIP)
   include(hptzip)
 endif()
 
@@ -31,10 +31,11 @@ ADD_EXECUTABLE(htick
   htick/src/toss.c
 )
 target_link_libraries(htick husky fidoconfig smapi areafix)
-target_include_directories(htick PRIVATE htick/h huskylib fidoconf areafix smapi hptzip)
+target_include_directories(htick PRIVATE htick/h huskylib fidoconf areafix smapi)
 
 if (HPTZIP)
-    target_link_libraries(htick hptzip ${ZLIB_LIBRARIES})
+  target_include_directories(htick PRIVATE hptzip)
+  target_link_libraries(htick hptzip ${ZLIB_LIBRARIES})
 endif()
 
 if (NOT MSVC)
