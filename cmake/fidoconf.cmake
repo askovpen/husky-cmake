@@ -5,12 +5,12 @@ endif()
 set(fidoconf_VERSION 1.9.0)
 
 SET(fidoconf_SOURCES
-  fidoconf/src/afixcmd.c
-  fidoconf/src/afixcmn.c
-  fidoconf/src/arealist.c
-  fidoconf/src/areatree.c
-  fidoconf/src/cfg.c
-  fidoconf/src/common.c
+  ${PROJECT_SOURCE_DIR}/fidoconf/src/afixcmd.c
+  ${PROJECT_SOURCE_DIR}/fidoconf/src/afixcmn.c
+  ${PROJECT_SOURCE_DIR}/fidoconf/src/arealist.c
+  ${PROJECT_SOURCE_DIR}/fidoconf/src/areatree.c
+  ${PROJECT_SOURCE_DIR}/fidoconf/src/cfg.c
+  ${PROJECT_SOURCE_DIR}/fidoconf/src/common.c
 #src/fc2aed.c
 #src/fc2binkd.c
 #src/fc2fgate.c
@@ -21,34 +21,34 @@ SET(fidoconf_SOURCES
 #src/fc2tor_g.c
 #src/fecfg146.c
 #src/fecfg2fc.c
-  fidoconf/src/fidoconf.c
-  fidoconf/src/findtok.c
-  fidoconf/src/grptree.c
-  fidoconf/src/line.c
+  ${PROJECT_SOURCE_DIR}/fidoconf/src/fidoconf.c
+  ${PROJECT_SOURCE_DIR}/fidoconf/src/findtok.c
+  ${PROJECT_SOURCE_DIR}/fidoconf/src/grptree.c
+  ${PROJECT_SOURCE_DIR}/fidoconf/src/line.c
 #  src/linked.c
-  fidoconf/src/stat.c
+  ${PROJECT_SOURCE_DIR}/fidoconf/src/stat.c
 #  src/tparser.c
-  fidoconf/src/version.c
+  ${PROJECT_SOURCE_DIR}/fidoconf/src/version.c
 )
 SET(fidoconf_HEADERS
-  fidoconf/fidoconf/afixcmd.h
-  fidoconf/fidoconf/arealist.h
-  fidoconf/fidoconf/areatree.h
-  fidoconf/fidoconf/common.h
-  fidoconf/fidoconf/fc2tor_g.h
-  fidoconf/fidoconf/fecfg146.h
-  fidoconf/fidoconf/fidoconf.h
-  fidoconf/fidoconf/findtok.h
-  fidoconf/fidoconf/grptree.h
-  fidoconf/fidoconf/stat.h
-  fidoconf/fidoconf/tokens.h
-  fidoconf/fidoconf/version.h
+  ${PROJECT_SOURCE_DIR}/fidoconf/fidoconf/afixcmd.h
+  ${PROJECT_SOURCE_DIR}/fidoconf/fidoconf/arealist.h
+  ${PROJECT_SOURCE_DIR}/fidoconf/fidoconf/areatree.h
+  ${PROJECT_SOURCE_DIR}/fidoconf/fidoconf/common.h
+  ${PROJECT_SOURCE_DIR}/fidoconf/fidoconf/fc2tor_g.h
+  ${PROJECT_SOURCE_DIR}/fidoconf/fidoconf/fecfg146.h
+  ${PROJECT_SOURCE_DIR}/fidoconf/fidoconf/fidoconf.h
+  ${PROJECT_SOURCE_DIR}/fidoconf/fidoconf/findtok.h
+  ${PROJECT_SOURCE_DIR}/fidoconf/fidoconf/grptree.h
+  ${PROJECT_SOURCE_DIR}/fidoconf/fidoconf/stat.h
+  ${PROJECT_SOURCE_DIR}/fidoconf/fidoconf/tokens.h
+  ${PROJECT_SOURCE_DIR}/fidoconf/fidoconf/version.h
 )
 ADD_LIBRARY(fidoconfig SHARED ${fidoconf_SOURCES})
-ADD_EXECUTABLE(fc2binkd fidoconf/src/fc2binkd.c)
-ADD_EXECUTABLE(tparser fidoconf/src/tparser.c)
-ADD_EXECUTABLE(linked fidoconf/src/linked.c)
-ADD_EXECUTABLE(fc2ged fidoconf/src/fc2ged.c)
+ADD_EXECUTABLE(fc2binkd ${PROJECT_SOURCE_DIR}/fidoconf/src/fc2binkd.c)
+ADD_EXECUTABLE(tparser ${PROJECT_SOURCE_DIR}/fidoconf/src/tparser.c)
+ADD_EXECUTABLE(linked ${PROJECT_SOURCE_DIR}/fidoconf/src/linked.c)
+ADD_EXECUTABLE(fc2ged ${PROJECT_SOURCE_DIR}/fidoconf/src/fc2ged.c)
 set_target_properties(fidoconfig PROPERTIES VERSION ${fidoconf_VERSION})
 set_target_properties(fidoconfig PROPERTIES PUBLIC_HEADER "${fidoconf_HEADERS}")
 target_link_libraries(fidoconfig husky)

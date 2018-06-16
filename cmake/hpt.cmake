@@ -15,53 +15,53 @@ if (NOT hptzip_VERSION)
 endif()
 
 ADD_EXECUTABLE(pktinfo
-  hpt/src/pktinfo.c
-  hpt/src/dupe.c
-  hpt/src/pktread.c
-  hpt/src/fcommon.c
-  hpt/src/global.c
+  ${PROJECT_SOURCE_DIR}/hpt/src/pktinfo.c
+  ${PROJECT_SOURCE_DIR}/hpt/src/dupe.c
+  ${PROJECT_SOURCE_DIR}/hpt/src/pktread.c
+  ${PROJECT_SOURCE_DIR}/hpt/src/fcommon.c
+  ${PROJECT_SOURCE_DIR}/hpt/src/global.c
 )
 ADD_EXECUTABLE(tpkt
-  hpt/src/tpkt.c
-  hpt/src/dupe.c
-  hpt/src/pktread.c
-  hpt/src/fcommon.c
-  hpt/src/global.c
-  hpt/src/pktwrite.c
+  ${PROJECT_SOURCE_DIR}/hpt/src/tpkt.c
+  ${PROJECT_SOURCE_DIR}/hpt/src/dupe.c
+  ${PROJECT_SOURCE_DIR}/hpt/src/pktread.c
+  ${PROJECT_SOURCE_DIR}/hpt/src/fcommon.c
+  ${PROJECT_SOURCE_DIR}/hpt/src/global.c
+  ${PROJECT_SOURCE_DIR}/hpt/src/pktwrite.c
 )
 ADD_EXECUTABLE(txt2pkt
-  hpt/src/txt2pkt.c
-  hpt/src/dupe.c
-  hpt/src/pktread.c
-  hpt/src/fcommon.c
-  hpt/src/global.c
-  hpt/src/pktwrite.c
+  ${PROJECT_SOURCE_DIR}/hpt/src/txt2pkt.c
+  ${PROJECT_SOURCE_DIR}/hpt/src/dupe.c
+  ${PROJECT_SOURCE_DIR}/hpt/src/pktread.c
+  ${PROJECT_SOURCE_DIR}/hpt/src/fcommon.c
+  ${PROJECT_SOURCE_DIR}/hpt/src/global.c
+  ${PROJECT_SOURCE_DIR}/hpt/src/pktwrite.c
 )
 ADD_EXECUTABLE(hptlink
-  hpt/src/hptlink.c
-  hpt/src/global.c
+  ${PROJECT_SOURCE_DIR}/hpt/src/hptlink.c
+  ${PROJECT_SOURCE_DIR}/hpt/src/global.c
 )
 ADD_EXECUTABLE(hpttree
-  hpt/src/hpttree.c
+  ${PROJECT_SOURCE_DIR}/hpt/src/hpttree.c
 )
 if (${PERLLIBS_FOUND})
-  set(per_SRC hpt/src/perl.c)
+  set(per_SRC ${PROJECT_SOURCE_DIR}/hpt/src/perl.c)
 endif()
 ADD_EXECUTABLE(hpt
-  hpt/src/hpt.c
-  hpt/src/dupe.c
-  hpt/src/pktread.c
-  hpt/src/fcommon.c
-  hpt/src/global.c
-  hpt/src/pktwrite.c
-  hpt/src/toss.c
-  hpt/src/scan.c
-  hpt/src/scanarea.c
-  hpt/src/post.c
-  hpt/src/hptafix.c
-  hpt/src/seenby.c
-  hpt/src/link.c
-  hpt/src/carbon.c
+  ${PROJECT_SOURCE_DIR}/hpt/src/hpt.c
+  ${PROJECT_SOURCE_DIR}/hpt/src/dupe.c
+  ${PROJECT_SOURCE_DIR}/hpt/src/pktread.c
+  ${PROJECT_SOURCE_DIR}/hpt/src/fcommon.c
+  ${PROJECT_SOURCE_DIR}/hpt/src/global.c
+  ${PROJECT_SOURCE_DIR}/hpt/src/pktwrite.c
+  ${PROJECT_SOURCE_DIR}/hpt/src/toss.c
+  ${PROJECT_SOURCE_DIR}/hpt/src/scan.c
+  ${PROJECT_SOURCE_DIR}/hpt/src/scanarea.c
+  ${PROJECT_SOURCE_DIR}/hpt/src/post.c
+  ${PROJECT_SOURCE_DIR}/hpt/src/hptafix.c
+  ${PROJECT_SOURCE_DIR}/hpt/src/seenby.c
+  ${PROJECT_SOURCE_DIR}/hpt/src/link.c
+  ${PROJECT_SOURCE_DIR}/hpt/src/carbon.c
   ${perl_SRC}
 )
 

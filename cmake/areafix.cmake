@@ -11,18 +11,18 @@ endif()
 set(areafix_VERSION 1.9.0)
 
 SET(areafix_SOURCES
-  areafix/src/afglobal.c
-  areafix/src/areafix.c
-  areafix/src/callback.c
-  areafix/src/query.c
-  areafix/src/version.c
+  ${PROJECT_SOURCE_DIR}/areafix/src/afglobal.c
+  ${PROJECT_SOURCE_DIR}/areafix/src/areafix.c
+  ${PROJECT_SOURCE_DIR}/areafix/src/callback.c
+  ${PROJECT_SOURCE_DIR}/areafix/src/query.c
+  ${PROJECT_SOURCE_DIR}/areafix/src/version.c
 )
 SET(areafix_HEADERS
-  areafix/areafix/afglobal.h
-  areafix/areafix/areafix.h
-  areafix/areafix/callback.h
-  areafix/areafix/query.h
-  areafix/areafix/version.h
+  ${PROJECT_SOURCE_DIR}/areafix/areafix/afglobal.h
+  ${PROJECT_SOURCE_DIR}/areafix/areafix/areafix.h
+  ${PROJECT_SOURCE_DIR}/areafix/areafix/callback.h
+  ${PROJECT_SOURCE_DIR}/areafix/areafix/query.h
+  ${PROJECT_SOURCE_DIR}/areafix/areafix/version.h
 )
 
 ADD_LIBRARY(areafix SHARED ${areafix_SOURCES})

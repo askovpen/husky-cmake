@@ -8,6 +8,8 @@ image:
 platform:
   - x86
 before_build:
+  - cmd: git submodule init
+  - cmd: git submodule update
   - cmd: mkdir build
   - cmd: cd build
   - cmd: cmake --version
