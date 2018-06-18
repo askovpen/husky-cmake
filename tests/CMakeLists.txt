@@ -1,6 +1,7 @@
 if (HPTZIP)
   add_executable(testhptzip testhptzip.c)
   TARGET_LINK_LIBRARIES(testhptzip hptzip)
+  target_include_directories(testhptzip PRIVATE ../hptzip)
   file(COPY test_zip DESTINATION "${CMAKE_BINARY_DIR}/tests")
   add_test(NAME "hptzip-pack" COMMAND testhptzip pack)
   add_test(NAME "hptzip-unpack" COMMAND testhptzip unpack)
