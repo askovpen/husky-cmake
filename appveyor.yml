@@ -18,3 +18,5 @@ build:
   project: c:\projects\cmake-init\build\husky.sln
   verbosity: minimal
   parallel: true
+after_build:
+  - cmd: ctest
