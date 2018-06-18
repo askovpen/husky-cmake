@@ -19,4 +19,5 @@ build:
   verbosity: minimal
   parallel: true
 after_build:
+  - cmd: cp Debug/hptzip.dll tests/Debug
   - cmd: ctest -C Debug
