@@ -19,4 +19,4 @@ build:
   verbosity: minimal
   parallel: true
 after_build:
-  - cmd: ctest
+  - cmd: ctest -C Debug
