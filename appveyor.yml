@@ -18,3 +18,7 @@ build:
   project: c:\projects\cmake-init\build\husky.sln
   verbosity: minimal
   parallel: true
+before_test:
+  - cmd: cp Debug/hptzip.dll tests/Debug
+test_script:
+  - cmd: ctest -C Debug

@@ -97,3 +97,6 @@ endif (ENABLE_SQPACK)
 if (ENABLE_HPUCODE)
   include(hpucode)
 endif (ENABLE_HPUCODE)
+
+enable_testing()
+add_subdirectory(tests)
