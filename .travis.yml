@@ -12,3 +12,4 @@ script:
   - cmake ..
   - cmake --build .
   - make test
+  - cpack

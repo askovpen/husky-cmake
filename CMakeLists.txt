@@ -2,12 +2,14 @@ cmake_minimum_required(VERSION 2.8.11)
 
 PROJECT(husky C)
 
+set (CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
+
 include(FindPerlLibs)
 set(ZLIB_ROOT "hptzip/zlib-win32")
 include(FindZLIB)
+include(mcpack)
 include(CPack)
 
-set (CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
 
 option(ENABLE_HPT "Build with hpt" ON)
 option(ENABLE_HTICK "Build with htick" ON)
@@ -100,3 +102,4 @@ endif (ENABLE_HPUCODE)
 
 enable_testing()
 add_subdirectory(tests)
+
