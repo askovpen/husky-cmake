@@ -19,8 +19,8 @@ build_script:
       C:\msys64\usr\bin\bash -e -l -c "cd husky-cmake && mkdir build && cd build && cmake .. -G \"MSYS Makefiles\" && cmake --build . -- VERBOSE=1" )
   - cmd: if "%GENERATOR%"=="Visual Studio 15 2017" (
       mkdir build && cd build && cmake --version &&  cmake .. -G "%GENERATOR%" && cmake --build . )
-  - cmd: cmake --build .
 before_test:
-  - cmd: cp Debug/hptzip.dll tests/Debug
+  - cmd: if "%GENERATOR%"=="Visual Studio 15 2017" cp Debug/hptzip.dll tests/Debug
 test_script:
-  - cmd: ctest -C Debug
+  - cmd: if "%GENERATOR%"=="Visual Studio 15 2017" ctest -C Debug
+  - cmd: if "%GENERATOR%"=="MSYS Makefiles" C:\msys64\usr\bin\bash -e -l -c "cd husky-cmake/build && ctest"
