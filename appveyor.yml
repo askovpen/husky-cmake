@@ -12,11 +12,11 @@ environment:
     - GENERATOR: Visual Studio 15 2017
     - GENERATOR: MinGW Makefiles
 install:
-  - ps: Get-Command sh.exe -All | Remove-Item
   - cmd: git submodule init
   - cmd: git submodule update
   - cmd: mkdir build
   - cmd: cd build
+  - ps: Get-Command sh.exe -All | Remove-Item
 before_build:
   - cmd: cmake --version
   - cmd: cmake .. -G "%GENERATOR%"
