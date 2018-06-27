@@ -13,7 +13,7 @@ environment:
 install:
   - cmd: git submodule init
   - cmd: git submodule update
-  - cmd: if "%GENERATOR%"=="MSYS Makefiles" C:\msys64\usr\bin\pacman -S --noconfirm --needed msys/zlib-devel
+  - cmd: if "%GENERATOR%"=="MSYS Makefiles" C:\msys64\usr\bin\pacman -S --noconfirm --needed zlib-devel mingw-w64-x86_64-pkg-config cmake
 build_script:
   - cmd: if "%GENERATOR%"=="MSYS Makefiles" (
       xcopy /i /q /s C:\projects\husky-cmake C:\msys64\home\appveyor\husky-cmake &&
