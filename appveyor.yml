@@ -11,6 +11,8 @@ environment:
   matrix:
     - GENERATOR: Visual Studio 15 2017
     - GENERATOR: MinGW Makefiles
+install:
+  - ps: Get-Command sh.exe -All | Remove-Item
 before_build:
   - cmd: git submodule init
   - cmd: git submodule update
@@ -19,7 +21,7 @@ before_build:
   - cmd: cmake --version
   - cmd: cmake .. -G "%GENERATOR%"
 build_script:
-  - cmd: cmake -build build
+  - cmd: cmake --build
 before_test:
   - cmd: cp Debug/hptzip.dll tests/Debug
 test_script:
