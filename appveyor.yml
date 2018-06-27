@@ -13,11 +13,11 @@ environment:
     - GENERATOR: MinGW Makefiles
 install:
   - ps: Get-Command sh.exe -All | Remove-Item
-before_build:
   - cmd: git submodule init
   - cmd: git submodule update
   - cmd: mkdir build
   - cmd: cd build
+before_build:
   - cmd: cmake --version
   - cmd: cmake .. -G "%GENERATOR%"
 build_script:
