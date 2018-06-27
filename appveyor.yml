@@ -18,11 +18,9 @@ install:
 build_script:
   - cmd: if [%GENERATOR%]==[MinGW Makefiles] (
     xcopy /i /q /s C:\projects\husky-cmake C:\MinGW\msys\1.0\home\appveyor\husky-cmake &&
-    C:\MinGW\msys\1.0\bin\bash -e -l -c "cd husky-cmake/build && cmake .. && cmake --build ."
-  )
+    C:\MinGW\msys\1.0\bin\bash -e -l -c "cd husky-cmake/build && cmake .. && cmake --build ." )
   - cmd: if [%GENERATOR%]==[Visual Studio 15 2017] (
-    mkdir build && cd build && cmake --version &&  cmake .. -G "%GENERATOR%" && cmake --build .
-  )
+    mkdir build && cd build && cmake --version &&  cmake .. -G "%GENERATOR%" && cmake --build . )
   - cmd: cmake --build .
 before_test:
   - cmd: cp Debug/hptzip.dll tests/Debug
