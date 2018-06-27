@@ -13,12 +13,10 @@ environment:
 install:
   - cmd: git submodule init
   - cmd: git submodule update
-  - cmd: mkdir build
-  - cmd: cd build
 build_script:
   - cmd: if "%GENERATOR%"=="MinGW Makefiles" (
       xcopy /i /q /s C:\projects\husky-cmake C:\msys64\home\appveyor\husky-cmake &&
-      C:\msys64\usr\bin\bash -e -l -c "pwd && cd husky-cmake && mkdir build && cd build && cmake .. && cmake --build ." )
+      C:\msys64\usr\bin\bash -e -l -c "pwd && cd husky-cmake && mkdir build && cd build && cmake .. -G \"MinGW Makefiles\" && cmake --build ." )
   - cmd: if "%GENERATOR%"=="Visual Studio 15 2017" (
       mkdir build && cd build && cmake --version &&  cmake .. -G "%GENERATOR%" && cmake --build . )
   - cmd: cmake --build .
