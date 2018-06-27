@@ -24,6 +24,10 @@ set(hptzip_HEADERS
   hptzip/hptzip/zip.h
 )
 
+if (MINGW OR MSYS)
+  ADD_DEFINITIONS(-DUSE_FILE32API)
+endif()
+
 ADD_LIBRARY(hptzip SHARED ${hptzip_SOURCES})
 set_target_properties(hptzip PROPERTIES VERSION ${hptzip_VERSION})
 set_target_properties(hptzip PROPERTIES PUBLIC_HEADER "${hptzip_HEADERS}")
