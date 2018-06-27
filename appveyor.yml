@@ -2,7 +2,6 @@ version: '{build}'
 branches:
   only:
     - master
-clone_folder: c:\projects\cmake-init
 image:
   - Visual Studio 2017
 platform:
@@ -16,12 +15,14 @@ install:
   - cmd: git submodule update
   - cmd: mkdir build
   - cmd: cd build
-  - ps: Get-Command sh.exe -All | Remove-Item
-before_build:
-  - if "%GENERATOR%"=="MinGW Makefiles" set PATH=%MINICONDA%;%MINICONDA%\\Scripts;C:\\msys64\\mingw64\\bin;C:\\Program Files\\7-Zip;%SystemRoot%\\system32;%SystemRoot%;%SystemRoot%\\System32\\Wbem;%SYSTEMROOT%\\System32\\WindowsPowerShell\\v1.0\\;c:\\Program Files (x86)\\CMake\\bin;
-  - cmd: cmake --version
-  - cmd: cmake .. -G "%GENERATOR%"
 build_script:
+  - cmd: if [%GENERATOR%]==[MinGW Makefiles] (
+    xcopy /i /q /s C:\projects\husky-cmake C:\MinGW\msys\1.0\home\appveyor\husky-cmake &&
+    C:\MinGW\msys\1.0\bin\bash -e -l -c "cd husky-cmake/build && cmake .. && cmake --build ."
+  )
+  - cmd: if [%GENERATOR%]==[Visual Studio 15 2017] (
+    mkdir build && cd build && cmake --version &&  cmake .. -G "%GENERATOR%" && cmake --build .
+  )
   - cmd: cmake --build .
 before_test:
   - cmd: cp Debug/hptzip.dll tests/Debug
