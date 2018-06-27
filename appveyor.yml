@@ -18,10 +18,11 @@ install:
   - cmd: cd build
   - ps: Get-Command sh.exe -All | Remove-Item
 before_build:
+  - if "%GENERATOR%"=="MinGW Makefiles" (set PATH=C:\\msys64\\mingw64\\bin;%PATH%)
   - cmd: cmake --version
   - cmd: cmake .. -G "%GENERATOR%"
 build_script:
-  - cmd: cmake --build
+  - cmd: cmake --build .
 before_test:
   - cmd: cp Debug/hptzip.dll tests/Debug
 test_script:
