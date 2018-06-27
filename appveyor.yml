@@ -2,23 +2,26 @@ version: '{build}'
 branches:
   only:
     - master
-clone_folder: c:\projects\cmake-init
 image:
   - Visual Studio 2017
 platform:
   - Win32
-before_build:
+environment:
+  matrix:
+    - TARGET: MSYS
+    - TARGET: MSVC2017
+install:
   - cmd: git submodule init
   - cmd: git submodule update
-  - cmd: mkdir build
-  - cmd: cd build
-  - cmd: cmake --version
-  - cmd: cmake .. -G "Visual Studio 15 2017"
-build:
-  project: c:\projects\cmake-init\build\husky.sln
-  verbosity: minimal
-  parallel: true
+  - cmd: if "%TARGET%"=="MSYS" C:\msys64\usr\bin\pacman -S --noconfirm --needed zlib-devel mingw-w64-x86_64-pkg-config cmake
+build_script:
+  - cmd: if "%TARGET%"=="MSYS" (
+      xcopy /i /q /s C:\projects\husky-cmake C:\msys64\home\appveyor\husky-cmake &&
+      C:\msys64\usr\bin\bash -e -l -c "cd husky-cmake && mkdir build && cd build && cmake .. -G \"Unix Makefiles\" && cmake --build ." )
+  - cmd: if "%TARGET%"=="MSVC2017" (
+      mkdir build && cd build && cmake --version &&  cmake .. -G "Visual Studio 15 2017" && cmake --build . )
 before_test:
-  - cmd: cp Debug/hptzip.dll tests/Debug
+  - cmd: if "%TARGET%"=="MSVC2017" cp Debug/hptzip.dll tests/Debug
 test_script:
-  - cmd: ctest -C Debug
+  - cmd: if "%TARGET%"=="MSVC2017" ctest -C Debug
+  - cmd: if "%TARGET%"=="MSYS" C:\msys64\usr\bin\bash -e -l -c "cd husky-cmake/build && cp msys-hptzip.dll tests && ctest"
