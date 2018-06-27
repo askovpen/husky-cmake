@@ -18,7 +18,7 @@ install:
   - cmd: cd build
   - ps: Get-Command sh.exe -All | Remove-Item
 before_build:
-  - if "%GENERATOR%"=="MinGW Makefiles" set PATH=%MINICONDA%;%MINICONDA%\\Scripts;C:\\msys64\\mingw64\\bin;C:\\Program Files\\7-Zip;%SystemRoot%\\system32;%SystemRoot%;%SystemRoot%\\System32\\Wbem;%SYSTEMROOT%\\System32\\WindowsPowerShell\\v1.0\\;c:\\Program Files\\CMake\\bin;
+  - if "%GENERATOR%"=="MinGW Makefiles" set PATH=%MINICONDA%;%MINICONDA%\\Scripts;C:\\msys64\\mingw64\\bin;C:\\Program Files\\7-Zip;%SystemRoot%\\system32;%SystemRoot%;%SystemRoot%\\System32\\Wbem;%SYSTEMROOT%\\System32\\WindowsPowerShell\\v1.0\\;c:\\Program Files (x86)\\CMake\\bin;
   - cmd: cmake --version
   - cmd: cmake .. -G "%GENERATOR%"
 build_script:
