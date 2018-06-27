@@ -7,17 +7,19 @@ image:
   - Visual Studio 2017
 platform:
   - Win32
+environment:
+  matrix:
+    - GENERATOR: Visual Studio 15 2017
+    - GENERATOR: MinGW Makefiles
 before_build:
   - cmd: git submodule init
   - cmd: git submodule update
   - cmd: mkdir build
   - cmd: cd build
   - cmd: cmake --version
-  - cmd: cmake .. -G "Visual Studio 15 2017"
-build:
-  project: c:\projects\cmake-init\build\husky.sln
-  verbosity: minimal
-  parallel: true
+  - cmd: cmake .. -G "%GENERATOR%"
+build_script:
+  - cmd: cmake -build build
 before_test:
   - cmd: cp Debug/hptzip.dll tests/Debug
 test_script:
