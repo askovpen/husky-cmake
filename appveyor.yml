@@ -22,6 +22,7 @@ build_script:
       mkdir build && cd build && cmake --version &&  cmake .. -G "Visual Studio 15 2017" && cmake --build . )
 before_test:
   - cmd: if "%TARGET%"=="MSVC2017" cp Debug/hptzip.dll tests/Debug
+  - cmd: if "%TARGET%"=="MSYS" cp msys-hptzip.dll tests
 test_script:
   - cmd: if "%TARGET%"=="MSVC2017" ctest -C Debug
   - cmd: if "%TARGET%"=="MSYS" C:\msys64\usr\bin\bash -e -l -c "cd husky-cmake/build && ctest || cat Testing/Temporary/LastTest.log"
