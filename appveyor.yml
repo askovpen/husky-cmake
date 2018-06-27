@@ -8,15 +8,15 @@ platform:
   - Win32
 environment:
   matrix:
-    - GENERATOR: MinGW Makefiles
+    - GENERATOR: MSYS Makefiles
     - GENERATOR: Visual Studio 15 2017
 install:
   - cmd: git submodule init
   - cmd: git submodule update
 build_script:
-  - cmd: if "%GENERATOR%"=="MinGW Makefiles" (
+  - cmd: if "%GENERATOR%"=="MSYS Makefiles" (
       xcopy /i /q /s C:\projects\husky-cmake C:\msys64\home\appveyor\husky-cmake &&
-      C:\msys64\usr\bin\bash -e -l -c "rm /usr/bin/sh.exe &&  rm \"C:/Program Files/Git/usr/bin/sh.exe\" && pwd && cd husky-cmake && mkdir build && cd build && cmake .. -G \"MinGW Makefiles\" && cmake --build ." )
+      C:\msys64\usr\bin\bash -e -l -c "rm /usr/bin/sh.exe &&  rm \"C:/Program Files/Git/usr/bin/sh.exe\" && pwd && cd husky-cmake && mkdir build && cd build && cmake .. -G \"MSYS Makefiles\" && cmake --build ." )
   - cmd: if "%GENERATOR%"=="Visual Studio 15 2017" (
       mkdir build && cd build && cmake --version &&  cmake .. -G "%GENERATOR%" && cmake --build . )
   - cmd: cmake --build .
