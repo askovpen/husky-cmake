@@ -17,7 +17,7 @@ install:
 build_script:
   - cmd: if "%GENERATOR%"=="MSYS Makefiles" (
       xcopy /i /q /s C:\projects\husky-cmake C:\msys64\home\appveyor\husky-cmake &&
-      C:\msys64\usr\bin\bash -e -l -c "cd husky-cmake && mkdir build && cd build && cmake .. -G \"Unix Makefiles\" && cmake --build .-- VERBOSE=1" )
+      C:\msys64\usr\bin\bash -e -l -c "cd husky-cmake && mkdir build && cd build && cmake .. -G \"Unix Makefiles\" -DIOAPI_NO_64=ON && cmake --build ." )
   - cmd: if "%GENERATOR%"=="Visual Studio 15 2017" (
       mkdir build && cd build && cmake --version &&  cmake .. -G "%GENERATOR%" && cmake --build . )
 before_test:
